@@ -1,6 +1,6 @@
 # Project 0 Getting Started: Instructions
 
-This is due **August 30 2024**. (See [late policy](#late-policy) at the bottom)
+This is due **August 29 2025**. (See [late policy](#late-policy) at the bottom)
 
 **Summary:** In this project, you will set up your GPU development tools and verify that you can build, run, and do performance analysis.
 
@@ -10,13 +10,13 @@ This project contains:
 2. **WebGL**: A guide to enable WebGL support on your machine.
 3. **WebGPU**: A guide to choose a browser that supports WebGPU
 
-**If your machine fails any of these (CUDA, WebGL), use the CETS Virtual Lab or SIGLAB's computers for your development. Your submission will require certain screenshots.**
+**If your machine fails any of these (CUDA, WebGL, WebGPU), use the CETS Virtual Lab or SIGLAB's computers for your development. Your submission will require certain screenshots.**
 
 ## Part 1: Setup your Development Environment
 
 CIS 5650 projects require a compatible NVIDIA GPU. As some of you may not have an NVIDIA GPU in your personal computers, we have made them available through the CETS Virtual Lab.
 
-Follow the [Hardware and Software Setup](https://cis5650-fall-2024.github.io/setup/) pages on the course website to set up your development environment.
+Follow the [Hardware and Software Setup](https://cis5650-fall-2025.github.io/setup/) pages on the course website to set up your development environment.
 
 *Notes:*
 
@@ -42,7 +42,7 @@ Follow the [Hardware and Software Setup](https://cis5650-fall-2024.github.io/set
      clone your fork.
         * `git clone` the clone URL from your GitHub fork homepage.
 
-Note: Do not clone projects directly from the [CIS5650-Fall-2024](https://github.com/CIS5650-Fall-2024) GitHub organization. Be sure to fork the project on GitHub first to your own account and then clone it using your fork.
+Note: Do not clone projects directly from the [CIS5650-Fall-2025](https://github.com/CIS5650-Fall-2025) GitHub organization. Be sure to fork the project on GitHub first to your own account and then clone it using your fork.
 
 *Getting Started with GitHub Resources:*
 
@@ -73,7 +73,7 @@ In your README, report the Compute Capability of your CUDA-compatible GPU (somet
         * Don't forget the `..` part! This tells CMake that the `CMakeLists.txt` file is in the parent directory of `build`.
     * Make sure that the "Source" directory points to the directory `cuda-getting-started`.
     * Click *Configure*.
-        * Select your Visual Studio version (2019 or 2017), and `x64` for your platform. (**NOTE:** you must use x64, as we don't provide libraries for Win32.)
+        * Select your Visual Studio version (2022), and `x64` for your platform. (**NOTE:** you must use x64, as we don't provide libraries for Win32.)
     * Click *Generate*.
 5. If generation was successful, there should now be a Visual Studio solution (`.sln`) file in the `build` directory that you just created. Open this with Visual Studio.
 6. Build. (Note that there are Debug and Release configuration options.)

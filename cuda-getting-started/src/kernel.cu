@@ -102,7 +102,7 @@ void kernelVersionVis(uchar4* PBOpos, int width, int height, int major, int mino
     createVersionVisualization<<<fullBlocksPerGrid, threadsPerBlock>>>(PBOpos, width, height, major, minor);
 
     // make certain the kernel has completed
-    cudaThreadSynchronize();
+    cudaDeviceSynchronize();
 
     checkCUDAError("Kernel failed!");
 }

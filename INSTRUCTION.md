@@ -1,6 +1,18 @@
-# Project 0 Getting Started: Instructions
+# Project 0
 
-This is due **August 29 2025**. (See [late policy](#late-policy) at the bottom)
+This project consists of two parts:
+
+1. Getting Started
+    * This is due **August 29 2025**. (See [late policy](#late-policy) at the bottom)
+    * Instructions for this project are below.
+2. CUDA Introduction
+    * This is an exercise for you to grasp core CUDA concepts that are taught in the first 2 lectures.
+    * Instructions of this exercise are in [CUDA Introduction - README](./cuda-introduction/README.md).
+    * It is strongly recommended that you complete these before you tackle Project 1 - CUDA Boids.
+    * It will likely take you 1-2 hours to complete. You can spend additional time trying out Nsight Debugger and other tools.
+    * Submission is not required. These are for your onboarding into CUDA programming.
+
+# Getting Started: Instructions
 
 **Summary:** In this project, you will set up your GPU development tools and verify that you can build, run, and do performance analysis.
 

@@ -1,63 +1,10 @@
-#include "termcolor.hpp"
+#include "common.h"
 
-#include <cuda_runtime.h>
 #include <device_launch_parameters.h>
 
 #include <cmath>
-#include <cstdio>
-#include <iomanip>
 #include <iostream>
 #include <random>
-#include <string>
-
-// LOOK: This is a macro that calls a CUDA function and checks for errors
-#define CUDA(call) do {                             \
-    cudaError_t e = (call);                         \
-    if (e == cudaSuccess) break;                    \
-    fprintf(stderr, __FILE__":%d: %s (%d)\n",       \
-            __LINE__, cudaGetErrorString(e), e);    \
-    exit(1);                                        \
-} while (0)
-
-// This function divides up the n by div - similar to ceil
-// Example, divup(10, 3) = 4
-inline unsigned divup(unsigned size, unsigned div)
-{
-    // TODO 5: implement a 1 line function to return the divup operation.
-    // Note: You only need to use addition, subtraction, and division operations.
-    return 0;
-}
-
-// Check errors
-bool postprocess(const float *ref, const float *res, unsigned size)
-{
-    bool passed = true;
-    for (unsigned i = 0; i < size; i++)
-    {
-        // LOOK: Check if floating point values are equal within an epsilon as returns can vary slightly between CPU and GPU
-        if (std::fabs(res[i] - ref[i]) > 1e-6)
-        {
-            std::cout << "ID: " << i << " \t Res: " << res[i] << " \t Ref: " << ref[i] << std::endl;
-            std::cout << termcolor::blink << termcolor::white << termcolor::on_red << "*** FAILED ***" << termcolor::reset << std::endl;
-            passed = false;
-            break;
-        }
-    }
-
-    if (passed)
-        std::cout << termcolor::green << "Post process check passed!!" << termcolor::reset << std::endl;
-
-    return passed;
-}
-
-void preprocess(float *res, float *dev_res, unsigned size)
-{
-    const float defaultFill = -1.0;
-    std::fill(res, res + size, defaultFill);
-
-    // LOOK: See how we fill the array with the same number to clear it.
-    CUDA(cudaMemset(dev_res, defaultFill, size * sizeof(float)));
-}
 
 __global__ void saxpy(float* const z, const float* const x, const float* const y, const float a, const unsigned size)
 {
@@ -117,12 +64,14 @@ int main(int argc, char *argv[])
     std::cout << "***SAXPY***" << std::endl;
 
     // LOOK: Use the preprocess function to clear z and d_z
-    preprocess(z, d_z, size);
+    clearHostAndDeviceArray(z, d_z, size);
 
     // TODO 4: Setup threads and blocks.
     // Start threadPerBlock as 128, then try out differnt configurations: 32, 64, 256, 512, 1024
     // Use divup to get the number of blocks to launch.
     const unsigned threadsPerBlock = 0;
+
+    // TODO 5: Implement the divup function in common.cpp
     const unsigned blocks = divup(size, threadsPerBlock);
 
     // TODO 6: Launch the GPU kernel with blocks and threadPerBlock as launch configuration
@@ -132,7 +81,7 @@ int main(int argc, char *argv[])
     // Copy what you did in 3, except for d_z -> z.
 
     // LOOK: Use postprocess to check the result
-    postprocess(z_gold, z, size);
+    compareReferenceAndResult(z_gold, z, size, 1e-6);
     std::cout << "****************************************************" << std::endl << std::endl;
     ////////////////////////////////////////////////////////////
 

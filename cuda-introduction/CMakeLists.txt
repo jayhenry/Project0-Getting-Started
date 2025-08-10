@@ -19,12 +19,21 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
     SET_PROPERTY(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 endif()
 
+set(common_headers
+    source/common.h
+    source/termcolor.hpp
+    )
+
+set(common_sources
+    source/common.cu
+    )
+
 ########################################
 # Setup the executables
 ########################################
 set(EXECUTABLES saxpy transpose matmul)
 foreach(exe ${EXECUTABLES})
-    add_executable(${exe} source/${exe}.cu ${headers})
+    add_executable(${exe} source/${exe}.cu ${common_headers} ${common_sources})
     if(CMAKE_VERSION VERSION_LESS "3.23.0")
         set_target_properties(${exe} PROPERTIES CUDA_ARCHITECTURES OFF)
     elseif(CMAKE_VERSION VERSION_LESS "3.24.0")

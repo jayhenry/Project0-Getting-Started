@@ -39,12 +39,18 @@ If you get stuck at any point, follow this order:
 2. Search on the internet. Try to understand the code others have written and use that to solve your problem.
 3. Use the [cuda-introduction-solutions branch](https://github.com/CIS5650-Fall-2025/Project0-Getting-Started/tree/cuda-introduction-solutions/cuda-introduction). The solutions for all the exercises are provided. For best learning, try to solve the problems on your own and only use this as reference to compare your implementation.
 
-### Visual Studio Hint:
+## Learn by breaking your programs
 
-* If you start running using `F5`, the command prompt will open and close.
-    * The `F5` shortcut is *Start Debugging*, which means Visual Studio will monitoring your application and it will not run at full performance.
-    * Use `F5` only when you are debugging.
-* Instead, use `Ctrl+F5` when you want to run without debugging. This will run the application at full performance as well as keep the command prompt open after the application ends.
+Following that, try to break your own implementations to familiarize yourself with common CUDA errors. Some examples include:
+* Pass invalid pointers - either null, or pass the host pointer to device.
+* Out of bounds access in CUDA functions like `cudaMemcpy` as well as in kernels.
+* Use incorrect sizes in CUDA APIs, for example set the size parameter to 0.
+* Launch kernels with bad configurations, including exceeding device limits.
+* Flip indices to force bad access patterns.
+
+When doing the above actions also use Nsight to debug.
+
+The goal is to not just understand how to correctly implement CUDA programs, but also identify when you are doing incorrect actions. This way, when you see similar errors in your subsequent projects, you'll know where to look.
 
 ## Third Party Code
 

@@ -21,11 +21,13 @@ Please ask me or the TAs ahead of time if you have trouble compiling the code. W
 
 ## Complete Intoduction Exercises
 
-Start with SAXPY, then Transpose, then Matrix Multiplication. In each file, follow the `TODO`s, which are numbered in order.
+Start with **SAXPY**. Follow the `TODO`s, including taking a look at `common.h` and `common.cpp`. The `TODO`s are numbered in order to help guide you.
 
 The `LOOK` comments are designed to show you best practices for CUDA Programming. You can copy these snippets into future projects if needed.
 
 Once you have completed each the the exercises, follow the `TODO Optional`s for testing different configurations of sizes.
+
+Repeat the same for **Matrix Transpose**, then **Matrix Multiplication**. In each file, follow the `TODO`s, which are numbered in order.
 
 ### Use Nsight Debuggers
 
@@ -42,6 +44,7 @@ If you get stuck at any point, follow this order:
 ## Learn by breaking your programs
 
 Following that, try to break your own implementations to familiarize yourself with common CUDA errors. Some examples include:
+
 * Pass invalid pointers - either null, or pass the host pointer to device.
 * Out of bounds access in CUDA functions like `cudaMemcpy` as well as in kernels.
 * Use incorrect sizes in CUDA APIs, for example set the size parameter to 0.

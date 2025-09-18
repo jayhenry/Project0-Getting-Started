@@ -1,0 +1,7 @@
+{
+    "cmake.configureEnvironment": { "VSLANG": "1033" },
+    "cmake.buildEnvironment": {
+        "VSLANG": "1033"
+    },
+    "cmake.sourceDirectory": "${workspaceFolder}/projects/jayhenry/Project0-Getting-Started/cuda-introduction"
+}
